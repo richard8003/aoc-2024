@@ -49,8 +49,10 @@ func main() {
 		x := guard.x
 		y := guard.y
 
-		if x > 129 || y > 129 {
-			// if x == len(karta.Nodes)-1 || y > len(karta.Nodes[0])-1 {
+		// if x > 129 || y > 129 {
+
+		// denna för testdata
+		if x == len(karta.Nodes)-1 || y > len(karta.Nodes[0])-1 {
 			break
 		}
 
@@ -166,8 +168,8 @@ func (k Karta) guardPosition() Node {
 }
 
 func makeMap() Karta {
-	rawMap, err := os.ReadFile("./input.txt")
-	// rawMap, err := os.ReadFile("./map.txt")
+	// rawMap, err := os.ReadFile("./input.txt")
+	rawMap, err := os.ReadFile("./testdata.txt")
 	handleError(err)
 
 	var array []NodeArray
@@ -191,4 +193,10 @@ func makeMap() Karta {
 	result.Nodes = array
 
 	return result
+}
+
+func handleError(err error) {
+	if err != nil {
+		fmt.Println("Error!")
+	}
 }
